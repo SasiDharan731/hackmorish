@@ -12,28 +12,9 @@ import map from '../Assets/map.png';
 import { useRouter} from 'next/router';
 // import Bounce from 'react-reveal/Bounce';
 import {useState, useEffect} from 'react'
-import axios from 'axios';
 function Dashboard() {
     const router = useRouter();
-    const [temp, setTemp] = useState(32)
-    const [humid, setHumid] = useState(63)
-    useEffect(() => {
-        axios.get("http://172.20.10.2:5000/temp").then((data) => {
-            if(data != undefined){
-                setTemp(32)
-            }
-            
-        }).catch((err) => {
-            setTemp(32)
-        })
-        axios.get("http://172.20.10.2:5000/humid").then((data) => {
-            if(data != undefined){
-                setHumid(62)
-            }
-        }).catch((err) => {
-            setHumid(63)
-        })
-    }, [])
+    
     return (
         <div className={styles.container}>
             <div className={styles.pu}>
@@ -99,7 +80,7 @@ function Dashboard() {
                                 height={30}
                             />
                             <div className={styles.helperText}>
-                                <span className={styles.helperHead}>{`${temp}°`}</span>{' '}
+                                <span className={styles.helperHead}>20°C</span>
                                 <br />
                                 <span className={styles.helperDown}>
                                     Temprature
@@ -138,7 +119,7 @@ function Dashboard() {
                             />
 
                             <div className={styles.helperText}>
-                                <span className={styles.helperHead}>{`${humid}%`}</span>{' '}
+                                <span className={styles.helperHead}>40%</span>
                                 <br />
                                 <span className={styles.helperDown}>
                                     Humidity
@@ -155,7 +136,7 @@ function Dashboard() {
                             />
 
                             <div className={styles.helperText}>
-                                <span className={styles.helperHead}>BLR</span>{' '}
+                                <span className={styles.helperHead}>CBE</span>{' '}
                                 <br />
                                 <span className={styles.helperDown}>
                                     Location
